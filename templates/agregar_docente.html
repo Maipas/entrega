@@ -1,0 +1,33 @@
+{% extends "padre.html" %}
+
+{% block titulo %}
+    Agregar Docente
+{% endblock %}
+
+{% block contenido %}
+
+{% if formularioC %}
+    <h1>Aca se agregan Docentes</h1>
+
+    <form action="" method="POST">
+        {% csrf_token %}
+        <table>
+        {{formularioC}}
+        </table>
+        <input type="submit", value="Enviar">
+    </form>
+{% elif new_docente %}
+
+    <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src=".../100px180/" alt="Card image cap">
+        <div class="card-body">
+            <h5 class="card-title">{{new_alumno.nombre}}</h5>
+            <p class="card-text">{{new_alumno.apellido}}</p>
+            <p class="card-text">{{new_alumno.nacimiento}}</p>
+            <p class="card-text">{{new_alumno.edad}}</p>
+            <p class="card-text">{{new_materia.materia}}</p>
+        </div>
+    </div>
+
+{% endif %}
+{% endblock %}

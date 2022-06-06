@@ -1,0 +1,26 @@
+{% extends "padre.html" %}
+
+{% block titulo %}
+    Alumnos
+{% endblock %}
+
+{% block contenido %}
+<h1>aca se visualizan los Alumnos</h1>
+<div class="d-flex" style="margin-top:5rem; margin-left:7rem">
+    {% for alumno in alumnos %}
+
+    <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src=".../100px180/" alt="Card image cap">
+        <div class="card-body">
+            <h5 class="card-title">nombre: {{alumno.nombre}}</h5>
+            <p class="card-text">apellido: {{alumno.apellido}}</p>
+            <p class="card-text">nacimiento: {{alumno.nacimiento}}</p>
+            <p class="card-text">edad: {{alumno.edad}}</p>
+            <p class="card-text">matricula:  {{alumno.matricula}}</p>
+        </div>
+    </div>
+
+    {% endfor %}
+</div>
+
+{% endblock %} 
