@@ -1,0 +1,53 @@
+{% extends 'padre.html' %}
+
+{% block titulo %}
+    Busqueda
+{% endblock %}
+
+{% block contenido %}
+<h2>resultados de tu busqueda</h2>
+<div class="d-flex" style="margin-top:5rem; margin-left:7rem">
+    {% for alumno in alumnos %}
+
+    <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src=".../100px180/" alt="Card image cap">
+        <div class="card-body">
+            <h5 class="card-title">{{alumno.nombre}}</h5>
+            <p class="card-text">{{alumno.apellido}}</p>
+            <p class="card-text">{{alumno.nacimiento}}</p>
+            <p class="card-text">{{alumno.edad}}</p>
+            <p class="card-text">{{alumno.matricula}}</p>
+        </div>
+    </div>
+    {% endfor %}
+    
+    {% for carrera in carreras %}
+    <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src=".../100px180/" alt="Card image cap">
+        <div class="card-body">
+            <h5 class="card-title">{{carrera.carrera}}</h5>
+            <p class="card-text">{{carrera.descripcion}}</p>
+            <p class="card-text">{{carrera.cantidad_de_materias}}</p>
+            <p class="card-text">{{carrera.duracion}}</p>
+            <p class="card-text">{{carrera.cantidad_de_alumnos}}</p>
+            <p class="card-text">{{carrera.docente}}</p>
+        </div>
+    </div>
+    {% endfor %}
+
+    {% for docente in docentes %}
+    <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src=".../100px180/" alt="Card image cap">
+        <div class="card-body">
+            <h5 class="card-title">{{carrera.carrera}}</h5>
+            <p class="card-text">{{carrera.descripcion}}</p>
+            <p class="card-text">{{carrera.cantidad_de_materias}}</p>
+            <p class="card-text">{{carrera.duracion}}</p>
+            <p class="card-text">{{carrera.cantidad_de_alumnos}}</p>
+            <p class="card-text">{{carrera.docente}}</p>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

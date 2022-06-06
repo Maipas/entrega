@@ -3,6 +3,9 @@ from datetime import datetime
 from django.http import HttpResponse
 from django.shortcuts import render
 from basedata.models import Contacto
+from alumnos.models import Alumno
+from basedata.models import Carrera
+from docentes.models import Docente
 
 def index(request):
         return render(request, 'index.html')
@@ -12,9 +15,10 @@ def contacto(request):
         context = {'contacto': contacto         }
         return render(request, 'contacto.html', context = context)
 
-# def search_product_view(request):
-#     print(request.GET)
-#     #product = Products.objects.get()
-#     products = Products.objects.filter(name__contains = request.GET['search'])
-#     context = {'products':products}
-#     return render(request, 'search_product.html', context = context)
+def search(request):
+        print(request.GET)
+        alumnos = Alumno.objects.filter(nombre__contains = request.GET['search'])
+        carreras = Carrera.objects.filter(carrera__contains = request.GET['search'])
+        docentes = Docente.objects.filter(nombre__contains = request.GET['search'])
+        context = {'alumnos':alumnos, 'carreras':carreras, 'docentes':docentes}
+        return render(request, 'search.html', context = context)
