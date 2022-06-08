@@ -28,6 +28,11 @@
             <p class="card-text">{{new_matricula.matricula}}</p>
         </div>
     </div>
+{% elif errors %}
 
+    <div style="color:red;">
+        {{errors}}
+    </div>
 {% endif %}
+
 {% endblock %}

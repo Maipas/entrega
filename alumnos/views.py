@@ -29,4 +29,6 @@ def agregar_alumnos(request):
                 active = formularioB.cleaned_data['active'],
             )
             context = {'new_alumno': new_alumno}
+        else:
+            context = {'errors': formularioB.errors}
         return render(request, 'agregar_alumno.html', context=context)

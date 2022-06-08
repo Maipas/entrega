@@ -29,4 +29,6 @@ def agregar_docentes(request):
                 active = formularioC.cleaned_data['active'],
             )
             context = {'new_docente': new_docente}
+        else:
+            context = {'errors': formularioC.errors}
         return render(request, 'agregar_docente.html', context=context)

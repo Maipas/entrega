@@ -30,4 +30,6 @@ def agregar_carreras(request):
                                 active = formularioA.cleaned_data['active'],
                         )
                         context = {'new_carrera': new_carrera}
+                else:
+                        context = {'errors': formularioA.errors}
                 return render(request, 'agregar_carrera.html', context=context)
