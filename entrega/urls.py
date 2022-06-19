@@ -20,7 +20,7 @@ from entrega.views import index, contacto, search
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index, name = 'index'),
-    path('carreras/', include ('basedata.urls')),
+    path('carreras/', include ('carreras.urls')),
     path('alumnos/', include ('alumnos.urls')),
     path('docentes/', include ('docentes.urls')),
     path('contacto/', contacto, name = 'contacto'),

@@ -3,9 +3,9 @@ from genericpath import exists
 
 from django.http import HttpResponse
 from django.shortcuts import render
-from basedata.models import Contacto
+from carreras.models import Contacto
 from alumnos.models import Alumno
-from basedata.models import Carrera
+from carreras.models import Carrera
 from docentes.models import Docente
 
 def index(request):

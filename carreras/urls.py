@@ -1,7 +1,7 @@
 from django.urls import path
 
-from basedata.views import carreras
-from basedata.views import agregar_carreras
+from carreras.views import carreras
+from carreras.views import agregar_carreras
 
 
 

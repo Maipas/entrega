@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 
-from basedata.models import Carrera
-from basedata.forms import Carrera_form
+from carreras.models import Carrera
+from carreras.forms import Carrera_form
 
 def carreras(request):
         print(request.method)
