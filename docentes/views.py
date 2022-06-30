@@ -10,7 +10,14 @@ def docentes(request):
         context = {'docentes': docentes}
         return render(request, 'docente.html', context = context)
 
-
+def detalle_docente(request,pk):
+    try:
+        docente = Docente.objects.get(id=pk)
+        context = {'docente':docente}
+        return render(request, 'docente_detalle.html', context=context)
+    except:
+        context = {'error':'El docente no existe'}
+        return render(request, 'docente.html', context=context)
 
 def agregar_docentes(request):
     if request.method == 'GET':

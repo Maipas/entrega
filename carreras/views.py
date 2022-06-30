@@ -10,7 +10,14 @@ def carreras(request):
         context = {'carreras':carreras}
         return render(request, 'carrera.html', context=context)
 
-
+def detalle_carrera(request,pk):
+        try:
+                carrera = Carrera.objects.get(id=pk)
+                context = {'carrera':carrera}
+                return render(request, 'carrera_detalle.html', context=context)
+        except:
+                context = {'error':'La carrera no existe'}
+                return render(request, 'carrera.html', context=context)
 
 def agregar_carreras(request):
         if request.method == 'GET':

@@ -10,6 +10,14 @@ def alumnos(request):
         context = {'alumnos': alumnos}
         return render(request, 'alumno.html', context = context)
 
+def detalle_alumno(request,pk):
+    try:
+        alumno = Alumno.objects.get(id=pk)
+        context = {'alumno':alumno}
+        return render(request, 'alumno_detalle.html', context=context)
+    except:
+        context = {'error':'El alumno no existe'}
+        return render(request, 'alumno.html', context=context)
 
 
 def agregar_alumnos(request):

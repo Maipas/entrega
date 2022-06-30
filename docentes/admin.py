@@ -4,4 +4,4 @@ from docentes.models import Docente
 
 @admin.register(Docente)
 class DocenteAdmin(admin.ModelAdmin):
-    list_display = ['apellido','nombre','nacimiento','edad','materia']
+    list_display = ['apellido','nombre','nacimiento','edad','materia', 'active']
