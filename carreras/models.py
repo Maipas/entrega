@@ -10,6 +10,9 @@ class Carrera(models.Model):
     docente = models.CharField(max_length=30)
     active = models.BooleanField(default=True)
 
+    class Meta:
+        verbose_name = 'carrera'
+        verbose_name_plural = 'carreras'
 
 
 

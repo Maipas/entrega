@@ -4,7 +4,11 @@ from django.db import models
 class Docente(models.Model):
     nombre = models.CharField(max_length=30)
     apellido = models.CharField(max_length=30)
-    nacimiento= models.IntegerField()
+    nacimiento= models.DateField()
     edad = models.IntegerField()
     materia = models.CharField(max_length=30, unique=True)
     active = models.BooleanField(default=True)
+
+    class Meta:
+        verbose_name = 'docente'
+        verbose_name_plural = 'docentes'
