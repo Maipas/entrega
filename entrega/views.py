@@ -8,7 +8,7 @@ from alumnos.models import Alumno
 from carreras.models import Carrera
 from docentes.models import Docente
 from django.contrib.auth.forms import AuthenticationForm
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login,logout
 
 
 def login_view(request):
@@ -39,6 +39,10 @@ def login_view(request):
                 form = AuthenticationForm()
                 context = {'form':form}
                 return render(request, 'auth/login.html', context = context)
+
+def logout_view(request):
+        logout(request)
+        return redirect('index')
 
 def index(request):
         print(request.user)

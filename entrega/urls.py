@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path, include
-from entrega.views import index, contacto, search, login_view
+from entrega.views import index, contacto, search, login_view,logout_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -11,4 +11,5 @@ urlpatterns = [
     path('contacto/', contacto, name = 'contacto'),
     path('search/', search, name = 'search'),
     path('login/', login_view, name = 'login'),
+    path('logout/', logout_view, name = 'logout'),
 ]

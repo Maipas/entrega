@@ -38,6 +38,15 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/contacto/">Acerca de Mi</a>
                 </li>
+                
+                <div class="btn-group" style="margin-left:98rem" role="group" aria-label="Basic example">
+                    {% if request.user.is_authenticated %}
+                    <a type="button" class="btn btn-secondary" href="/logout/">Log-Out</a>
+                    {% else %}
+                    <a type="button" class="btn btn-success" href="/login/">Log-In</a>
+                    <a type="button" class="btn btn-info" href="/registrarse/">Registrarse</a>
+                </div>
+                {% endif %}
             </ul>
             </form>
             <form class="form-inline my-2 my-lg-0" action = "/search/" method = "GET">
