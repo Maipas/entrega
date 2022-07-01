@@ -10,7 +10,7 @@ def alumnos(request):
         context = {'alumnos': alumnos}
         return render(request, 'alumno.html', context = context)
 
-def detalle_alumno(request,pk):
+def detalle_alumno(request, pk):
     try:
         alumno = Alumno.objects.get(id=pk)
         context = {'alumno':alumno}
@@ -19,6 +19,21 @@ def detalle_alumno(request,pk):
         context = {'error':'El alumno no existe'}
         return render(request, 'alumno.html', context=context)
 
+def borrar_alumno(request, pk):
+    try:
+        if request.method == 'GET':
+            alumno = Alumno.objects.get(id=pk)
+            context = {'alumno':alumno}
+        else:
+            alumno = Alumno.objects.get(id=pk)
+            alumno.delete()
+            context = {'message' : 'Alumno eliminado correctamente'}
+
+        return render(request, 'alumno_borrar.html', context = context)
+
+    except:
+        context = {'error':'El alumno no existe'}
+        return render(request, 'alumno_borrar.html', context=context)
 
 def agregar_alumnos(request):
     if request.method == 'GET':

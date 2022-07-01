@@ -19,6 +19,22 @@ def detalle_carrera(request,pk):
                 context = {'error':'La carrera no existe'}
                 return render(request, 'carrera.html', context=context)
 
+def borrar_carrera(request, pk):
+        try:
+                if request.method == 'GET':
+                        carrera = Carrera.objects.get(id=pk)
+                        context = {'carrera':carrera}
+                else:
+                        carrera = Carrera.objects.get(id=pk)
+                        carrera.delete()
+                        context = {'message' : 'Carrera eliminado correctamente'}
+
+                return render(request, 'carrera_borrar.html', context = context)
+
+        except:
+                context = {'error':'La carrera no existe'}
+                return render(request, 'carrera_borrar.html', context=context)
+
 def agregar_carreras(request):
         if request.method == 'GET':
                 formularioA = Carrera_form()

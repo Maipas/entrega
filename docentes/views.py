@@ -19,6 +19,22 @@ def detalle_docente(request,pk):
         context = {'error':'El docente no existe'}
         return render(request, 'docente.html', context=context)
 
+def borrar_docente(request, pk):
+        try:
+                if request.method == 'GET':
+                        docente = Docente.objects.get(id=pk)
+                        context = {'docente':docente}
+                else:
+                        docente = Docente.objects.get(id=pk)
+                        docente.delete()
+                        context = {'message' : 'Docente eliminado correctamente'}
+
+                return render(request, 'docente_borrar.html', context = context)
+
+        except:
+                context = {'error':'El docente no existe'}
+                return render(request, 'docente_borrar.html', context=context)
+
 def agregar_docentes(request):
     if request.method == 'GET':
         formularioC = Docente_form()
