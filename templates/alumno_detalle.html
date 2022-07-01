@@ -17,8 +17,16 @@
             <p class="card-text">nacimiento: {{alumno.nacimiento}}</p>
             <p class="card-text">edad: {{alumno.edad}}</p>
             <p class="card-text">matricula:  {{alumno.matricula}}</p>
-            <a href="#" class="btn btn-primary">Editar</a>
-            <a href="/alumnos/borrar-alumno/{{alumno.id}}" class="btn btn-danger">Eliminar</a>
+            <div class="dropdown">
+                <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-expanded="false">
+                    Acciones
+                </a>
+                
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    <a class="dropdown-item" href="/alumnos/editar-alumno/{{alumno.id}}">Editar</a>
+                    <a class="dropdown-item" href="/alumnos/borrar-alumno/{{alumno.id}}">Eliminar</a>
+                </div>
+                </div>
         </div>
     </div>
 

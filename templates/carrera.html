@@ -8,7 +8,7 @@
 {% block contenido %}
 <h1 style="margin-left:60rem">Aca se visualizan las Carreras</h1>
 <div class="d-flex" style="margin-top:5rem; margin-left:7rem">
-    {% for carrera in carreras %}
+    {% for carrera in object_list %}
 
     <div class="card" style="width: 18rem;">
         <img class="card-img-top" src=".../100px180/" alt="Card image cap">
@@ -16,10 +16,7 @@
             <h5 class="card-title">Carrera: {{carrera.carrera}}</h5>
             <p class="card-text">Descripcion: {{carrera.descripcion}}</p>
             <p class="card-text">Materias: {{carrera.cantidad_de_materias}}</p>
-            <p class="card-text">Duracion: {{carrera.duracion}}</p>
-            <p class="card-text">Alumnos:  {{carrera.cantidad_de_alumnos}}</p>
-            <p class="card-text">Profesor: {{carrera.docente}}</p>
-            <a href="/carreras/detalle-carrera/{{carrera.id}}/" class="btn btn-primary">Detalles</a>
+            <a href="/carreras/detalle-carrera/{{carrera.id}}/" class="btn btn-primary">Ver +</a>
         </div>
     </div>
 

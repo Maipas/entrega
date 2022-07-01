@@ -6,7 +6,7 @@
 
 {% block contenido %}
 
-{% if docente %}
+
 <h3 style="color:red">Estas por eliminar el docente {{docente.apellido}} {{docente.nombre}}, estas seguro?</h3>
 
 </form>
@@ -15,9 +15,5 @@
     <button class="btn btn-danger" type="submit">Eliminar</button>
     <a href="/docentes/detalle-docente/{{docente.id}}/" class="btn btn-secondary">Volver</a>
 </form>
-
-{% else %}
-    {{message}}
-{% endif %}
 
 {% endblock %} 

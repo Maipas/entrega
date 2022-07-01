@@ -6,7 +6,7 @@
 
 {% block contenido %}
 
-{% if carrera %}
+
 <h3 style="color:red">Estas por eliminar la carrera {{carrera.carrera}} {{carrera.descripcion}}, estas seguro?</h3>
 
 </form>
@@ -15,9 +15,5 @@
     <button class="btn btn-danger" type="submit">Eliminar</button>
     <a href="/carreras/detalle-carrera/{{carrera.id}}/" class="btn btn-secondary">Volver</a>
 </form>
-
-{% else %}
-    {{message}}
-{% endif %}
 
 {% endblock %} 

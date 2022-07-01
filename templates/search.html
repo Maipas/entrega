@@ -17,6 +17,7 @@
             <p class="card-text">{{alumno.nacimiento}}</p>
             <p class="card-text">{{alumno.edad}}</p>
             <p class="card-text">{{alumno.matricula}}</p>
+            <a href="/alumnos/detalle-alumno/{{alumno.id}}/" class="btn btn-primary">Ver +</a>
         </div>
     </div>
     {% endfor %}
@@ -31,6 +32,7 @@
             <p class="card-text">{{carrera.duracion}}</p>
             <p class="card-text">{{carrera.cantidad_de_alumnos}}</p>
             <p class="card-text">{{carrera.docente}}</p>
+            <a href="/carreras/detalle-carrera/{{carrera.id}}/" class="btn btn-primary">Ver +</a>
         </div>
     </div>
     {% endfor %}
@@ -44,8 +46,10 @@
             <p class="card-text">{{docente.nacimiento}}</p>
             <p class="card-text">{{docente.edad}}</p>
             <p class="card-text">{{docente.materia}}</p>
+            <a href="/docentes/detalle-docente/{{docente.id}}/" class="btn btn-primary">Ver +</a>
         </div>
     </div>
     {% endfor %}
 </div>
+
 {% endblock %}

@@ -6,18 +6,14 @@
 
 {% block contenido %}
 
-{% if alumno %}
-<h3 style="color:red">Estas por eliminar el alumno {{alumno.apellido}} {{alumno.nombre}}, estas seguro?</h3>
+
+<h3 style="color:red">Estas por eliminar el alumno {{object.apellido}} {{object.nombre}}, estas seguro?</h3>
 
 </form>
-<form action = "/alumnos/borrar-alumno/{{alumno.id}}/" method = "POST">
+<form method = "POST">
     {% csrf_token %}
     <button class="btn btn-danger" type="submit">Eliminar</button>
     <a href="/alumnos/detalle-alumno/{{alumno.id}}/" class="btn btn-secondary">Volver</a>
 </form>
-
-{% else %}
-    {{message}}
-{% endif %}
 
 {% endblock %} 

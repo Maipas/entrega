@@ -6,33 +6,16 @@
 
 {% block contenido %}
 
-{% if formularioB %}
-    <h1>Aca se agregan alumnos</h1>
+{% if form %}
+    <h1 style="margin-left:60rem">Agregar Alumno</h1>
 
-    <form action="" method="POST">
+    <form action="" method="POST" style="margin-left:60rem;margin-top:7rem">
         {% csrf_token %}
         <table>
-        {{formularioB}}
+        {{form}}
         </table>
         <input type="submit", value="Enviar">
     </form>
-{% elif new_alumno %}
-
-    <div class="card" style="width: 18rem;">
-        <img class="card-img-top" src=".../100px180/" alt="Card image cap">
-        <div class="card-body">
-            <h5 class="card-title">{{new_alumno.nombre}}</h5>
-            <p class="card-text">{{new_alumno.apellido}}</p>
-            <p class="card-text">{{new_alumno.nacimiento}}</p>
-            <p class="card-text">{{new_alumno.edad}}</p>
-            <p class="card-text">{{new_matricula.matricula}}</p>
-        </div>
-    </div>
-{% elif errors %}
-
-    <div style="color:red;">
-        {{errors}}
-    </div>
-{% endif %}
+{% endif %} 
 
 {% endblock %}

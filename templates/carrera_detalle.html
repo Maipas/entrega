@@ -18,8 +18,15 @@
             <p class="card-text">Duracion: {{carrera.duracion}}</p>
             <p class="card-text">Alumnos:  {{carrera.cantidad_de_alumnos}}</p>
             <p class="card-text">Profesor: {{carrera.docente}}</p>
-            <a href="#" class="btn btn-primary">Editar</a>
-            <a href="/carreras/borrar-carrera/{{carrera.id}}" class="btn btn-danger">Eliminar</a>
+            <div class="dropdown">
+                <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-expanded="false">
+                    Acciones
+                </a>
+                
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    <a class="dropdown-item" href="/carreras/editar-carrera/{{carrera.id}}">Editar</a>
+                    <a class="dropdown-item" href="/carreras/borrar-carrera/{{carrera.id}}">Eliminar</a>
+                </div>
         </div>
     </div>
 

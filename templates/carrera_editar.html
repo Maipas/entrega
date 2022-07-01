@@ -1,0 +1,21 @@
+{% extends "padre.html" %}
+
+{% block titulo %}
+    Editar Carrera
+{% endblock %}
+
+{% block contenido %}
+
+    {% if form %}
+        <h1 style="margin-left:60rem">Actualizar Carrera</h1>
+
+        <form action="" method="POST" style="margin-left:60rem;margin-top:7rem">
+            {% csrf_token %}
+            <table>
+            {{form}}
+            </table>
+            <input type="submit", value="Enviar">
+        </form>
+    {% endif %} 
+
+{% endblock %}

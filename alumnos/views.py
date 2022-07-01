@@ -1,57 +1,39 @@
+from email import message
+from urllib import request
 from django.shortcuts import render
 from django.http import HttpResponse
-
+from django.urls import reverse
 from alumnos.models import Alumno
-from alumnos.forms import Alumno_form
+from django.views.generic import ListView, DetailView, CreateView, DeleteView, UpdateView
 
-def alumnos(request):
-        print(request.method)
-        alumnos = Alumno.objects.all()
-        context = {'alumnos': alumnos}
-        return render(request, 'alumno.html', context = context)
+class Alumnos(ListView):
+    model = Alumno
+    template_name = 'alumno.html'
+    queryset = Alumno.objects.filter(active = True)
 
-def detalle_alumno(request, pk):
-    try:
-        alumno = Alumno.objects.get(id=pk)
-        context = {'alumno':alumno}
-        return render(request, 'alumno_detalle.html', context=context)
-    except:
-        context = {'error':'El alumno no existe'}
-        return render(request, 'alumno.html', context=context)
+class Detalle_alumno(DetailView):
+    model = Alumno
+    template_name = 'alumno_detalle.html'
 
-def borrar_alumno(request, pk):
-    try:
-        if request.method == 'GET':
-            alumno = Alumno.objects.get(id=pk)
-            context = {'alumno':alumno}
-        else:
-            alumno = Alumno.objects.get(id=pk)
-            alumno.delete()
-            context = {'message' : 'Alumno eliminado correctamente'}
+class Agregar_alumno(CreateView):
+    model = Alumno
+    template_name = 'agregar_alumno.html'
+    fields = '__all__'
 
-        return render(request, 'alumno_borrar.html', context = context)
+    def get_success_url(self):
+        return reverse('detalle_alumno', kwargs={'pk':self.object.pk})
 
-    except:
-        context = {'error':'El alumno no existe'}
-        return render(request, 'alumno_borrar.html', context=context)
+class Borrar_alumno(DeleteView):
+    model = Alumno
+    template_name = 'alumno_borrar.html'
 
-def agregar_alumnos(request):
-    if request.method == 'GET':
-        formularioB = Alumno_form()
-        context = {'formularioB': formularioB}
-        return render(request, 'agregar_alumno.html', context=context)
-    else:
-        formularioB = Alumno_form(request.POST)
-        if formularioB.is_valid():
-            new_alumno = Alumno.objects.create(
-                nombre = formularioB.cleaned_data['nombre'],
-                apellido = formularioB.cleaned_data['apellido'],
-                nacimiento = formularioB.cleaned_data['nacimiento'],
-                edad = formularioB.cleaned_data['edad'],
-                matricula = formularioB.cleaned_data['matricula'],
-                active = formularioB.cleaned_data['active'],
-            )
-            context = {'new_alumno': new_alumno}
-        else:
-            context = {'errors': formularioB.errors}
-        return render(request, 'agregar_alumno.html', context=context)
+    def get_success_url(self):
+        return reverse('alumnos')
+
+class Editar_alumno(UpdateView):
+    model = Alumno
+    template_name = 'alumno_editar.html'
+    fields = ['nombre','apellido','nacimiento','edad']
+
+    def get_success_url(self):
+        return reverse('detalle_alumno', kwargs={'pk':self.object.pk})

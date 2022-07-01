@@ -1,57 +1,37 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-
+from django.urls import reverse
 from docentes.models import Docente
-from docentes.forms import Docente_form
+from django.views.generic import ListView, DetailView, CreateView, DeleteView, UpdateView
 
-def docentes(request):
-        print(request.method)
-        docentes = Docente.objects.all()
-        context = {'docentes': docentes}
-        return render(request, 'docente.html', context = context)
+class Docentes(ListView):
+    model = Docente
+    template_name = 'docente.html'
+    queryset = Docente.objects.filter(active = True)
 
-def detalle_docente(request,pk):
-    try:
-        docente = Docente.objects.get(id=pk)
-        context = {'docente':docente}
-        return render(request, 'docente_detalle.html', context=context)
-    except:
-        context = {'error':'El docente no existe'}
-        return render(request, 'docente.html', context=context)
+class Detalle_docente(DetailView):
+    model = Docente
+    template_name = 'docente_detalle.html'
 
-def borrar_docente(request, pk):
-        try:
-                if request.method == 'GET':
-                        docente = Docente.objects.get(id=pk)
-                        context = {'docente':docente}
-                else:
-                        docente = Docente.objects.get(id=pk)
-                        docente.delete()
-                        context = {'message' : 'Docente eliminado correctamente'}
+class Agregar_docente(CreateView):
+    model = Docente
+    template_name = 'agregar_docente.html'
+    fields = '__all__'
 
-                return render(request, 'docente_borrar.html', context = context)
+    def get_success_url(self):
+        return reverse('detalle_docente', kwargs={'pk':self.object.pk})
 
-        except:
-                context = {'error':'El docente no existe'}
-                return render(request, 'docente_borrar.html', context=context)
+class Borrar_docente(DeleteView):
+    model = Docente
+    template_name = 'docente_borrar.html'
 
-def agregar_docentes(request):
-    if request.method == 'GET':
-        formularioC = Docente_form()
-        context = {'formularioC': formularioC}
-        return render(request, 'agregar_docente.html', context=context)
-    else:
-        formularioC = Docente_form(request.POST)
-        if formularioC.is_valid():
-            new_docente = Docente.objects.create(
-                nombre = formularioC.cleaned_data['nombre'],
-                apellido = formularioC.cleaned_data['apellido'],
-                nacimiento = formularioC.cleaned_data['nacimiento'],
-                edad = formularioC.cleaned_data['edad'],
-                materia = formularioC.cleaned_data['materia'],
-                active = formularioC.cleaned_data['active'],
-            )
-            context = {'new_docente': new_docente}
-        else:
-            context = {'errors': formularioC.errors}
-        return render(request, 'agregar_docente.html', context=context)
+    def get_success_url(self):
+        return reverse('docentes')
+
+class Editar_docente(UpdateView):
+    model = Docente
+    template_name = 'docente_editar.html'
+    fields = ['nombre','apellido','nacimiento','edad']
+
+    def get_success_url(self):
+        return reverse('detalle_docente', kwargs={'pk':self.object.pk})

@@ -1,36 +1,21 @@
 {% extends "padre.html" %}
 
 {% block titulo %}
-    Agregar Carreras
+    Agregar carrera
 {% endblock %}
 
 {% block contenido %}
 
-{% if formularioA %}
-    <h1>Aca se agregan carreras</h1>
+{% if form %}
+    <h1 style="margin-left:60rem">Agregar Alumno</h1>
 
-    <form action="" method="POST">
+    <form action="" method="POST" style="margin-left:60rem;margin-top:7rem">
         {% csrf_token %}
         <table>
-        {{formularioA}}
+        {{form}}
         </table>
         <input type="submit", value="Enviar">
     </form>
-{% elif new_carrera %}
+{% endif %} 
 
-    <div class="card" style="width: 18rem;">
-        <img class="card-img-top" src=".../100px180/" alt="Card image cap">
-        <div class="card-body">
-            <h5 class="card-title">{{new_carrera.carrera}}</h5>
-            <p class="card-text">{{new_carrera.descripcion}}</p>
-            <p class="card-text">{{new_carrera.cantidad_de_materias}}</p>
-            <p class="card-text">{{new_carrera.duracion}}</p>
-        </div>
-    </div>
-    {% elif errors %}
-
-    <div style="color:red;">
-        {{errors}}
-    </div>
-{% endif %}
 {% endblock %}

@@ -10,17 +10,14 @@
 {{message}}
 
 <div class="d-flex" style="margin-top:5rem; margin-left:7rem">
-    {% for alumno in alumnos %}
+    {% for alumno in object_list %}
 
     <div class="card" style="width: 18rem;">
         <img class="card-img-top" src=".../100px180/" alt="Card image cap">
         <div class="card-body">
             <h5 class="card-title">nombre: {{alumno.nombre}}</h5>
             <p class="card-text">apellido: {{alumno.apellido}}</p>
-            <p class="card-text">nacimiento: {{alumno.nacimiento}}</p>
-            <p class="card-text">edad: {{alumno.edad}}</p>
-            <p class="card-text">matricula:  {{alumno.matricula}}</p>
-            <a href="/alumnos/detalle-alumno/{{alumno.id}}/" class="btn btn-primary">Detalles</a>
+            <a href="/alumnos/detalle-alumno/{{alumno.id}}/" class="btn btn-primary">Ver +</a>
         </div>
     </div>
 
@@ -30,5 +27,5 @@
 
 
 <br>
-<a href="/alumnos/agregar-alumno" type="button" class="btn btn-dark">Agregar Alumno</a>
+<a href="/alumnos/agregar-alumno"  type="button" class="btn btn-dark">Agregar Alumno</a>
 {% endblock %} 
