@@ -42,6 +42,7 @@ MY_APPS=[
     'carreras',
     'alumnos',
     'docentes',
+    'users',
 ]
 
 THIRD_APPS = [
