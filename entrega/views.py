@@ -7,7 +7,7 @@ from carreras.models import Contacto
 from alumnos.models import Alumno
 from carreras.models import Carrera
 from docentes.models import Docente
-from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth import authenticate, login,logout
 
 
@@ -43,6 +43,28 @@ def login_view(request):
 def logout_view(request):
         logout(request)
         return redirect('index')
+
+def register_view(request):
+        if request.method == "POST":
+                form = UserCreationForm(request.POST)
+                if form.is_valid():
+                        form.save()
+                        username = form.cleaned_data['username']
+                        password = form.cleaned_data['password1']
+                        user = authenticate(username=username, password=password)
+                        login(request, user)
+                        context ={'message':f'Usuario creado correctamente. Bievenido {username}'}
+                        return render(request, 'index.html', context = context)
+                else:
+                        errors = form.errors
+                        form = UserCreationForm()
+                        context = {'errors':errors, 'form':form}
+                        return render (request, 'auth/register.html', context = context)
+        else:
+                form = UserCreationForm()
+                context = {'form':form}
+                return render(request, 'auth/register.html', context = context)
+
 
 def index(request):
         print(request.user)
