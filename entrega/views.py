@@ -1,15 +1,13 @@
-from datetime import datetime
-from genericpath import exists
-from multiprocessing import context
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from carreras.models import Contacto
 from alumnos.models import Alumno
 from carreras.models import Carrera
 from docentes.models import Docente
-from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
+from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import authenticate, login,logout
 from entrega.forms import User_registration_form
+from django.contrib.auth.decorators import login_required
 
 def login_view(request):
 
@@ -71,10 +69,17 @@ def index(request):
         print(request.user.is_authenticated)
         return render(request, 'index.html')
 
+# @login_required
+# def contacto(request):
+#         contacto = Contacto.objects.all()
+#         context = {'contacto': contacto         }
+#         return render(request, 'contacto.html', context = context)
+        
 def contacto(request):
-        contacto = Contacto.objects.all()
-        context = {'contacto': contacto         }
-        return render(request, 'contacto.html', context = context)
+        if request.user.is_authenticated and request.user.is_superuser:
+                return render(request, 'contacto.html')
+        else:
+                return redirect('login')
 
 def search(request):
         print(request.GET)
