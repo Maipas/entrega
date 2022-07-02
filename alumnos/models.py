@@ -9,6 +9,7 @@ class Alumno(models.Model):
     edad = models.IntegerField()
     matricula = models.CharField(max_length=30, unique=True)
     active = models.BooleanField(default=True)
+    image=models.ImageField(upload_to ='alumnos', blank=True, null=True)
 
     class Meta:
         verbose_name = 'alumno'

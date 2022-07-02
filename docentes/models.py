@@ -8,6 +8,7 @@ class Docente(models.Model):
     edad = models.IntegerField()
     materia = models.CharField(max_length=30, unique=True)
     active = models.BooleanField(default=True)
+    image=models.ImageField(upload_to ='docentes', blank=True, null=True)
 
     class Meta:
         verbose_name = 'docente'

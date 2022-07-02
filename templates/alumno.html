@@ -13,7 +13,9 @@
     {% for alumno in object_list %}
 
     <div class="card" style="width: 18rem;">
-        <img class="card-img-top" src=".../100px180/" alt="Card image cap">
+        {% if alumno.image %}
+        <img class="card-img-top" src="{{alumno.image.url}}" alt="Card image cap">
+        {% endif %}
         <div class="card-body">
             <h5 class="card-title">nombre: {{alumno.nombre}}</h5>
             <p class="card-text">apellido: {{alumno.apellido}}</p>

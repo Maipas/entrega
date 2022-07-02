@@ -9,7 +9,7 @@
 {% if form %}
     <h1 style="margin-left:60rem">Agregar Docente</h1>
 
-    <form action="" method="POST" style="margin-left:60rem;margin-top:7rem">
+    <form action="" method="POST" style="margin-left:60rem;margin-top:7rem" enctype="multipart/form-data">
         {% csrf_token %}
         <table>
         {{form}}

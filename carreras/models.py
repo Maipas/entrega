@@ -9,7 +9,8 @@ class Carrera(models.Model):
     cantidad_de_alumnos = models.CharField(max_length=30)
     docente = models.CharField(max_length=30)
     active = models.BooleanField(default=True)
-
+    image=models.ImageField(upload_to ='carreras', blank=True, null=True)
+    
     class Meta:
         verbose_name = 'carrera'
         verbose_name_plural = 'carreras'
