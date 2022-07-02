@@ -67,7 +67,7 @@ def register_view(request):
 def index(request):
         print(request.user)
         print(request.user.is_authenticated)
-        print(request.user.user_profile)
+        # print(request.user.user_profile)
         return render(request, 'index.html')
 
 # @login_required

@@ -11,7 +11,9 @@
     {% for carrera in object_list %}
 
     <div class="card" style="width: 18rem;">
+        {% if carrera.image %}
         <img class="card-img-top" src="{{carrera.image.url}}" alt="Card image cap">
+        {% endif %}
         <div class="card-body">
             <h5 class="card-title">Carrera: {{carrera.carrera}}</h5>
             <p class="card-text">Descripcion: {{carrera.descripcion}}</p>
