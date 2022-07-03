@@ -6,11 +6,13 @@
 
 {% block contenido %}
 <h2>resultados de tu busqueda</h2>
+{{errors}}
 <div class="d-flex" style="margin-top:5rem; margin-left:7rem">
+    
     {% for alumno in alumnos %}
 
     <div class="card" style="width: 18rem;">
-        <img class="card-img-top" src=".../100px180/" alt="Card image cap">
+        <img class="card-img-top" src="{{alumno.image.url}}" alt="Card image cap">
         <div class="card-body">
             <h5 class="card-title">{{alumno.nombre}}</h5>
             <p class="card-text">{{alumno.apellido}}</p>
@@ -24,7 +26,7 @@
     
     {% for carrera in carreras %}
     <div class="card" style="width: 18rem;">
-        <img class="card-img-top" src=".../100px180/" alt="Card image cap">
+        <img class="card-img-top" src="{{carrera.image.url}}" alt="Card image cap">
         <div class="card-body">
             <h5 class="card-title">{{carrera.carrera}}</h5>
             <p class="card-text">{{carrera.descripcion}}</p>
@@ -39,7 +41,7 @@
 
     {% for docente in docentes %}
     <div class="card" style="width: 18rem;">
-        <img class="card-img-top" src=".../100px180/" alt="Card image cap">
+        <img class="card-img-top" src="{{docente.image.url}}" alt="Card image cap">
         <div class="card-body">
             <h5 class="card-title">{{docente.nombre}}</h5>
             <p class="card-text">{{docente.apellido}}</p>

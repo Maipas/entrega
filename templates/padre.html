@@ -41,10 +41,10 @@
                 
                 <div class="btn-group" style="margin-left:98rem" role="group" aria-label="Basic example">
                     {% if request.user.is_authenticated %}
-                    <a type="button" class="btn btn-light" >
+                    <a type="button" class="btn btn-light">
                         <img src="{{request.user.user_profile.profile_image.url}}" style="height: 1.5rem;">
                     </a>
-                    <button type="button" class="btn btn-light">{{request.user.username}}</button>
+                    <a type="button" class="btn btn-light" href="{% url 'editarperfil' %}">{{request.user.username}}</a>
                     <a type="button" class="btn btn-secondary" href="/logout/">Log-Out</a>
                     {% else %}
                     <a type="button" class="btn btn-success" href="/login/">Log-In</a>
@@ -54,7 +54,7 @@
             </ul>
             </form>
             <form class="form-inline my-2 my-lg-0" action = "/search/" method = "GET">
-                <input class="form-control mr-sm-2" type="text" placeholder="Buscar" aria-label="Search" name = 'search'>
+                <input class="form-control mr-sm-2" type="text" placeholder="Apellidos o carreras" aria-label="Search" name = 'search'>
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
             </form>
         </div>
