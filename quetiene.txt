@@ -1,0 +1,6 @@
+La pagina contiene
+Log-in, log-out, registrarse, editar perfiles
+Separada en 4 apps, Alumnos, Carreras, Docentes, User.
+    	en cada app se puede con 'permisos' Agregar, editar o eliminar.
+Esta compuesta de index, alumnos, carreras, docentes, acerca de mi.
+Posee un buscador por apellidos o carreras.
