@@ -89,7 +89,7 @@ def index(request):
 #         return render(request, 'contacto.html', context = context)
         
 def contacto(request):
-        if request.user.is_authenticated and request.user.is_superuser:
+        if request.user.is_authenticated:
                 return render(request, 'contacto.html')
         else:
                 return redirect('login')
